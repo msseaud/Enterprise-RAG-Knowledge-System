@@ -25,3 +25,4 @@ def ask(q: str):
         "latency": f"{latency}s",
         "docs_used": len(retrieved_docs)
     }
+# TODO: integrate real vector database
