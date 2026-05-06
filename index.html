@@ -68,19 +68,18 @@ async function ask() {
         return;
     }
 
-    resultDiv.innerHTML = "<span class='loading'>⏳ Thinking...</span>";
+    resultDiv.innerHTML = "⏳ Thinking...";
 
     try {
-        const res = await fetch(`http://127.0.0.1:8000/ask?q=${encodeURIComponent(q)}`);
+        const res = await fetch("http://localhost:8000/ask?q=" + encodeURIComponent(q));
         const data = await res.json();
 
         resultDiv.innerHTML = `
-    <b>Answer:</b><br>${data.answer}<br><br>
-    <b>Retrieved:</b><br>
-    ${(data.retrieved_docs || []).join("<br>")}
-`;
+            <b>Answer:</b><br>${data.answer || "No answer"}
+        `;
     } catch (err) {
-        resultDiv.innerHTML = "❌ Error connecting to backend.";
+        resultDiv.innerHTML = "❌ Error connecting to backend";
+        console.error(err);
     }
 }
 </script>
