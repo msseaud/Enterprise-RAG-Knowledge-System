@@ -7,4 +7,4 @@ app.include_router(router)
 
 @app.get("/")
 def root():
-    return {"message": "RAG system running"}
+    return {"message": "Enterprise RAG System Running"}
