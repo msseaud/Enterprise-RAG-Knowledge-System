@@ -75,9 +75,10 @@ async function ask() {
         const data = await res.json();
 
         resultDiv.innerHTML = `
-            <b>Answer:</b><br>${data.answer}<br><br>
-            <b>Retrieved:</b><br>${data.retrieved_docs.join("<br>")}
-        `;
+    <b>Answer:</b><br>${data.answer}<br><br>
+    <b>Retrieved:</b><br>
+    ${(data.retrieved_docs || []).join("<br>")}
+`;
     } catch (err) {
         resultDiv.innerHTML = "❌ Error connecting to backend.";
     }
