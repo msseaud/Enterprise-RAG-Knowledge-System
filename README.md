@@ -95,3 +95,14 @@ Response:
   "latency": "0.2s",
   "docs_used": 3
 }
+
+## 🖥️ System Output Example
+
+[INFO] Initializing system...
+[INFO] Loading embedding model...
+[INFO] Building vector index...
+
+[QUERY] What is RAG?
+[Retriever] Retrieved 3 relevant documents
+[Generator] Generating answer...
+[SUCCESS] Response generated in 0.18s
