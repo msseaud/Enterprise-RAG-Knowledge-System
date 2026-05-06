@@ -60,3 +60,14 @@ Query → Retriever → Generator → Response
 ## 📌 Status
 
 This project has been tested locally and is used for basic knowledge retrieval scenarios.
+
+## 🔍 Sample Output
+
+[INFO] Uploading document...
+[INFO] Splitting into chunks...
+[INFO] Generating embeddings...
+[INFO] Stored in vector index
+
+[QUERY] Explain RAG
+[Retriever] Top 3 documents retrieved
+[Generator] Answer generated successfully
