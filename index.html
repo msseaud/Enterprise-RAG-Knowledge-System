@@ -1,87 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>RAG Knowledge System</title>
+    <title>Enterprise AI Knowledge Platform</title>
     <style>
-        body {
+        body{
             font-family: Arial;
-            background: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            margin-top: 80px;
+            background:#f5f7fa;
+            text-align:center;
+            margin-top:100px;
         }
 
-        .container {
-            width: 600px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .box{
+            width:600px;
+            margin:auto;
+            background:white;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 0 20px rgba(0,0,0,0.1);
         }
 
-        h1 {
-            text-align: center;
+        input{
+            width:80%;
+            padding:12px;
+            margin-top:20px;
         }
 
-        input {
-            width: 80%;
-            padding: 10px;
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-
-        .answer {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f0f0f0;
-            border-radius: 5px;
-        }
-
-        .loading {
-            color: gray;
+        button{
+            padding:12px 30px;
+            margin-top:20px;
+            background:#1677ff;
+            color:white;
+            border:none;
+            border-radius:8px;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>🧠 RAG QA System</h1>
+<div class="box">
 
-    <input type="text" id="question" placeholder="Ask something...">
-    <button onclick="ask()">Ask</button>
+    <h1>Enterprise AI Knowledge Platform</h1>
 
-    <div id="result" class="answer"></div>
+    <p>Intelligent Enterprise RAG System</p>
+
+    <input id="question" placeholder="Ask something..." />
+
+    <br>
+
+    <button onclick="askAI()">Submit</button>
+
+    <h3 id="result"></h3>
+
 </div>
 
 <script>
-async function ask() {
-    const q = document.getElementById("question").value;
-    const resultDiv = document.getElementById("result");
 
-    if (!q) {
-        resultDiv.innerHTML = "⚠️ Please enter a question.";
-        return;
-    }
+async function askAI(){
 
-    resultDiv.innerHTML = "⏳ Thinking...";
+    let q = document.getElementById("question").value;
 
-    try {
-        const res = await fetch("http://localhost:8000/ask?q=" + encodeURIComponent(q));
-        const data = await res.json();
+    let res = await fetch(`http://127.0.0.1:8000/ask?q=${q}`);
 
-        resultDiv.innerHTML = `
-            <b>Answer:</b><br>${data.answer || "No answer"}
-        `;
-    } catch (err) {
-        resultDiv.innerHTML = "❌ Error connecting to backend";
-        console.error(err);
-    }
+    let data = await res.json();
+
+    document.getElementById("result").innerText = data.answer;
 }
+
 </script>
 
 </body>
